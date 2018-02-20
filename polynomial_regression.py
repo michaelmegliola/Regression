@@ -33,7 +33,7 @@ a = np.random.rand() * 5 - 10
 b = np.random.rand() * 5 - 10
 c = np.random.rand() * 5 - 10
 
-alpha = 0.0005
+alpha = 0.001
 prior_error = 0
 
 for i in range(10000):
@@ -49,18 +49,20 @@ for i in range(10000):
         #
         #        error = (prediction - observation)^2
         #
-        #       (--- outer function is difference squared ---)
-        #                 |========prediction========| |obsv|
-        error += np.square(a * x[j] ** 2 + b * x[j] + c - y[j])
+        #       |--------------------------------------------|
+        #       | to apply the chain rule... the outer       |
+        #       | function is (prediction - observation)^2   |
+        #       |         |========prediction========| |obsv||
+        error += np.square(a * x[j]**2 + b * x[j] + c - y[j])
 
-        #           |====derivative of outer function =====|   | w/r/t a |
-        derror_da += 2 * (a * x[j] ** 2 + b * x[j] + c - y[j]) * (x[j] ** 2)
+        #           |====derivative of outer function ======| | w/r/t a |
+        derror_da += 2 * (a * x[j]**2 + b * x[j] + c - y[j]) * x[j]**2
 
-        #           |====derivative of outer function =====|   | w/r/t b |
-        derror_db += 2 * (a * x[j] ** 2 + b * x[j] + c - y[j]) * x[j]
+        #           |====derivative of outer function ======| | w/r/t b |
+        derror_db += 2 * (a * x[j]**2 + b * x[j] + c - y[j]) * x[j]
 
-        #           |====derivative of outer function =====|   | w/r/t c |
-        derror_dc += 2 * (a * x[j] ** 2 + b * x[j] + c - y[j]) * 1
+        #           |====derivative of outer function ======| | w/r/t c |
+        derror_dc += 2 * (a * x[j]**2 + b * x[j] + c - y[j]) * 1
         # ------------------------------------------------------------------
 
     # take a step in the right direction...

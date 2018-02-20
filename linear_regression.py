@@ -44,8 +44,10 @@ for i in range(10000):
         #
         #        error = (prediction - observation)^2
         #
-        #       ( outer func is diff squared  )
-        #                 |=prediction=| |obsv|
+        #       |--------------------------------------------|
+        #       | to apply the chain rule... the outer       |
+        #       | function is (prediction - observation)^2   |
+        #       |         |=prediction=| |obsv|              |
         error += np.square(m * x[j] + b - y[j])
 
         #           |=derivative of outer fn=|  | w/r/t m|
