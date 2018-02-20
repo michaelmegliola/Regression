@@ -4,12 +4,13 @@ import time
 
 
 class MyGraph:
-    def __init__(self, x, y):
+    def __init__(self, x, y, m, b):
         plt.ion()
         self.figure = plt.figure()
         self.ax = self.figure.add_subplot(111)
         self.line1, = self.ax.plot(x, y, 'o')
-        self.line2, = self.ax.plot(x, y, 'b-')
+        yi = [m * xi + b for xi in x]
+        self.line2, = self.ax.plot(x, yi, 'b-')
         self.count = 0
 
     def update(self, m, b, error):
@@ -24,13 +25,13 @@ class MyGraph:
 x = [0, 1, 2, 3, 4, 5]
 y = [0, 2, 1, 7, 4, 12]
 
-graph = MyGraph(x, y)
-
 m = np.random.rand() * 5 - 10
 b = np.random.rand() * 5 - 10
 
 alpha = 0.001
 prior_error = 0
+
+graph = MyGraph(x, y, m, b)
 
 for i in range(10000):
 

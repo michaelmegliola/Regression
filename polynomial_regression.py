@@ -10,7 +10,7 @@ class MyGraph:
         self.figure = plt.figure()
         self.ax = self.figure.add_subplot(111)
         self.line1, = self.ax.plot(x, y, 'o')
-        self.line2, = self.ax.plot(x, y, 'b-')
+        self.line2, = self.ax.plot([0], [0], 'b-')
         self.x_curve = np.arange(-10, 10, 0.1)
 
     def update(self, a, b, c, error):
