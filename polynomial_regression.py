@@ -12,6 +12,7 @@ class MyGraph:
         self.line1, = self.ax.plot(x, y, 'o')
         self.line2, = self.ax.plot([0], [0], 'b-')
         self.x_curve = np.arange(-10, 10, 0.1)
+        plt.ylim(-8, 20)
 
     def update(self, a, b, c, error):
         plt.title('{:0d}'.format(self.count) + ' a=' + '{:.3f}'.format(a) + ' b=' + '{:.3f}'.format(b) + ' c=' + '{:.3f}'.format(

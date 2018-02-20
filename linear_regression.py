@@ -12,6 +12,7 @@ class MyGraph:
         yi = [m * xi + b for xi in x]
         self.line2, = self.ax.plot(x, yi, 'b-')
         self.count = 0
+        plt.ylim(-3, 15)
 
     def update(self, m, b, error):
         plt.title('{:0d}'.format(self.count) + ' m=' + '{:.3f}'.format(m) + ' b=' + '{:.3f}'.format(b) + ' error=' + '{:.3f}'.format(error))
