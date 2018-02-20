@@ -24,8 +24,8 @@ class MyGraph:
         self.count += 1
 
 
-x = [0, 1, 2, 3, 4, 5]
-y = [0, 2, 1, 7, 4, 12]
+x = [-4, -2, 0, 2, 4]
+y = [17, 5, 1, 5, 17]
 
 graph = MyGraph(x, y)
 
@@ -33,7 +33,7 @@ a = np.random.rand() * 5 - 10
 b = np.random.rand() * 5 - 10
 c = np.random.rand() * 5 - 10
 
-alpha = 0.00025
+alpha = 0.0005
 prior_error = 0
 
 for i in range(10000):
